@@ -1,0 +1,57 @@
+<p-fieldset legend="View Data Pucks">
+  <div class="col-12">
+
+  <div class="card">
+    <p-table #dt1 [value]="pucks" selectionMode="single"  dataKey="id" styleClass="p-datatable-customers" responsiveLayout="scroll"
+             [rows]="5" [paginator]="true">
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="puckName">Puck Name <p-sortIcon field="puckName"></p-sortIcon></th>
+          <th pSortableColumn="environmentName">Environment <p-sortIcon field="environmentName"></p-sortIcon></th>
+          <th pSortableColumn="ownerName">Owner Name <p-sortIcon field="ownerName"></p-sortIcon></th>
+       <th>Actions</th>
+        </tr>
+        <tr>
+          <th>
+            <input pInputText type="text" (input)="dt1.filter($event.target.value, 'puckName', 'contains')" [value]="dt1.filters['puckName']?.value" placeholder="Search by Puck Name" class="p-column-filter">
+          </th>
+          <th>
+            <input pInputText type="text" (input)="dt1.filter($event.target.value, 'environmentName', 'contains')" [value]="dt1.filters['environmentName']?.value" placeholder="Search by Environment" class="p-column-filter">
+          </th>
+          <th>
+            <input pInputText type="text" (input)="dt1.filter($event.target.value, 'ownerName', 'contains')" [value]="dt1.filters['ownerName']?.value" placeholder="Search by Owner Name" class="p-column-filter">
+          </th>
+          <th></th>
+
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-puck>
+        <tr [pSelectableRow]="puck">
+          <td>
+            <span class="p-column-title">Puck Name</span>
+            {{puck?.puckName}}
+          </td>
+          <td>
+            <span class="p-column-title">Environment Name</span>
+          {{puck?.environmentName}}
+          </td>
+          <td>
+            <span class="p-column-title">Owner Name</span>
+            {{puck?.ownerName}}
+          </td>
+          <td>
+            <span class="p-column-title">Actions</span>
+            <button pButton pRipple type="button" label="Select" class="p-button-raised"></button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="4">No Pucks found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  </div>
+
+</p-fieldset>
