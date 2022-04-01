@@ -1,0 +1,26 @@
+<div class="layout-wrapper" [ngClass]="{
+                                'layout-overlay':isOverlay(),
+                                'layout-static':isStatic(),
+                                'layout-theme-light':false,
+                                'layout-theme-dark':true,
+                                'layout-overlay-sidebar-active': false,
+                                'layout-static-sidebar-inactive': true,
+                                'layout-mobile-sidebar-active':menuActiveMobile,
+                                'p-ripple-disabled': !config.ripple, 'p-input-filled': true}">
+  <app-topbar></app-topbar>
+
+
+  <div class="layout-sidebar">
+  <app-menu></app-menu>
+  </div>
+  <div class="layout-main-container">
+    <div class="layout-main">
+      <div class="col-12">
+          <p-breadcrumb [model]="breadcrumbItems" [home]="{icon: 'pi pi-home'}"></p-breadcrumb>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <app-config></app-config>
+  <div *ngIf="menuActiveMobile" class="layout-mask p-component-overlay"></div>
+</div>
