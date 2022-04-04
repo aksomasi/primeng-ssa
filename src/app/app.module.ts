@@ -94,6 +94,8 @@ import { TreeModule } from 'primeng/tree';
 import { TreeSelectModule } from 'primeng/treeselect';
 import { TreeTableModule } from 'primeng/treetable';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
+import { DatasetsComponent } from './pucks/datasets/datasets.component';
+import { CreateDatasetComponent } from './pucks/create-dataset/create-dataset.component';
 
 // @ts-ignore
 @NgModule({
@@ -104,7 +106,9 @@ import { VirtualScrollerModule } from 'primeng/virtualscroller';
     AppMainComponent,
     TopbarComponent,
     ConfigComponent,
-    MenuComponent
+    MenuComponent,
+    DatasetsComponent,
+    CreateDatasetComponent
   ],
   imports: [
     BrowserModule,
@@ -201,6 +205,7 @@ import { VirtualScrollerModule } from 'primeng/virtualscroller';
     TreeModule,
     TreeSelectModule,
     TreeTableModule,
+    VirtualScrollerModule,
     VirtualScrollerModule,
     StyleClassModule,
   ],

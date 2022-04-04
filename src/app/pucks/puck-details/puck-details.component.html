@@ -1,0 +1,43 @@
+<div class="col-12">
+    <div class="p-fluid p-formgrid grid">
+      <div class="field col-12 md:col-4">
+        <label htmlFor="firstname2" style="padding-right: 10px">Owner:</label>
+          <strong>Owner Name</strong>
+      </div>
+      <div class="field col-12 md:col-8">
+        <label htmlFor="lastname2" style="padding-right: 10px">Data Team:</label>
+          <strong>Data Puck Scheme Name</strong>
+      </div>
+      <div class="field col-12 md:col-4">
+        <label htmlFor="firstname2" style="padding-right: 10px">Puck Family:</label>
+        <strong>Owner Name</strong>
+      </div>
+      <div class="field col-12 md:col-8">
+        <label htmlFor="lastname2" style="padding-right: 10px">Environment :</label>
+        <strong>Production</strong>
+      </div>
+      <div class="field col-12">
+        <label htmlFor="address" style="padding-right: 10px">Domains:</label>
+        <strong>Production , Testing, Dev </strong>
+      </div>
+    </div>
+  </div>
+
+<div class="p-toolbar-group-left flex flex-wrap">
+  <h2 style="color: black;padding-right: 30px;">Modules</h2>
+  <button pButton style="height: 30px;" type="button" label="Add New Module" icon="pi pi-plus" class="mr-2"></button>
+</div>
+
+<div class="col-12">
+  <div class="card">
+    <p-carousel [value]="products" [numVisible]="6" [numScroll]="1" [circular]="false" [responsiveOptions]="carouselResponsiveOptions">
+      <ng-template let-product pTemplate="item">
+        <div class="border-round module-outer m-2 text-center p-2" style="border: 1px solid var(--surface-d)">
+         <div class="module-inner">
+            <h2 class="mb-1">{{product.name}}</h2>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+</div>

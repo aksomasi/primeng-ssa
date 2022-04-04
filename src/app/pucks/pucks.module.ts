@@ -9,11 +9,21 @@ import {FieldsetModule} from "primeng/fieldset";
 import {ButtonModule} from "primeng/button";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {InputTextModule} from "primeng/inputtext";
+import { PuckDetailsComponent } from './puck-details/puck-details.component';
+import {ToolbarModule} from "primeng/toolbar";
+import { CarouselModule } from 'primeng/carousel';
+import {DatasetsComponent} from "./datasets/datasets.component";
+import {CreateDatasetComponent} from "./create-dataset/create-dataset.component";
 
 const routes: Routes = [
   {path: '', component: PucksComponent,
     children: [
-      {path: '', component: ViewPucksComponent}
+      {path: '', component: ViewPucksComponent},
+      {path: 'puck-detail', component: PuckDetailsComponent},
+      {path: 'puck-detail/datasets', component: DatasetsComponent},
+      {path: 'puck-detail/datasets/create-dataset', component: CreateDatasetComponent}
+
+
     ]},
 ];
 
@@ -21,12 +31,15 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     ViewPucksComponent,
-    PucksComponent
+    PucksComponent,
+    PuckDetailsComponent
   ],
   imports: [
     CommonModule,
+    CarouselModule,
     TableModule,
     FieldsetModule,
+    ToolbarModule,
     InputTextModule,
     ButtonModule,
     RouterModule.forChild(routes)

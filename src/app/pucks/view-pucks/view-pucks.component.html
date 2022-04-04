@@ -11,25 +11,25 @@
         <ng-template pTemplate="header">
           <tr>
             <th>
-              <div class="flex justify-content-between align-items-center">
-                Puck Name
+              <div class="justify-content-between align-items-center">
+               <span  pSortableColumn="name"> Puck Name Dataset <p-sortIcon field="name"></p-sortIcon></span>
                 <p-columnFilter type="text" field="name" display="menu" placeholder="Search by name"></p-columnFilter>
               </div>
             </th>
             <th>
-              <div class="flex justify-content-between align-items-center">
+              <div class="justify-content-between align-items-center">
                 Environment
                 <p-columnFilter type="text" field="country.name" display="menu" placeholder="Search by country"></p-columnFilter>
               </div>
             </th>
             <th>
-              <div class="flex justify-content-between align-items-center">
+              <div class="justify-content-between align-items-center">
                 Owner Name
                 <p-columnFilter type="text" field="country.name" display="menu" placeholder="Search by country"></p-columnFilter>
               </div>
             </th>
             <th>
-              <div class="flex justify-content-between align-items-center">
+              <div class="justify-content-between align-items-center">
                 Actions
               </div>
             </th>

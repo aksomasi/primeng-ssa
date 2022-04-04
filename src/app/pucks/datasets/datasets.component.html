@@ -1,0 +1,35 @@
+<div class="col-4">
+  <div class="p-toolbar-group-left flex flex-wrap">
+    <h2 style="color: black;padding-right: 30px;">Datasets</h2>
+    <button pButton style="height: 30px;" type="button" label="Add New Dataset" icon="pi pi-plus" class="mr-2"></button>
+  </div>
+
+  <div class="card">
+    <p-table #dt1 [value]="datasets" selectionMode="single"  dataKey="id" styleClass="p-datatable-datasets" responsiveLayout="scroll"
+             [rows]="5" [paginator]="true">
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="datasetName">Dataset <p-sortIcon field="datasetName"></p-sortIcon></th>
+        </tr>
+        <tr>
+          <th>
+            <input pInputText type="text" (input)="dt1.filter($event.target.value, 'datasetName', 'contains')" [value]="dt1.filters['datasetName']?.value" placeholder="Search by Dataset Name" class="p-column-filter">
+          </th>
+       </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dataset>
+        <tr>
+          <td>
+            <span class="p-column-title">Dataset Name</span>
+            {{dataset?.datasetName}}
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="4">No Datasets found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
