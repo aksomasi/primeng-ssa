@@ -14,11 +14,12 @@ import {ToolbarModule} from "primeng/toolbar";
 import { CarouselModule } from 'primeng/carousel';
 import {DatasetsComponent} from "./datasets/datasets.component";
 import {CreateDatasetComponent} from "./create-dataset/create-dataset.component";
+import {InputMaskModule} from 'primeng/inputmask';
 
 const routes: Routes = [
-  {path: '', component: PucksComponent,
+  {path: '', component: CreateDatasetComponent,
     children: [
-      {path: '', component: ViewPucksComponent},
+      {path: '', component: CreateDatasetComponent},
       {path: 'puck-detail', component: PuckDetailsComponent},
       {path: 'puck-detail/datasets', component: DatasetsComponent},
       {path: 'puck-detail/datasets/create-dataset', component: CreateDatasetComponent}
@@ -36,11 +37,14 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     CarouselModule,
     TableModule,
     FieldsetModule,
     ToolbarModule,
     InputTextModule,
+    InputMaskModule,
     ButtonModule,
     RouterModule.forChild(routes)
   ],

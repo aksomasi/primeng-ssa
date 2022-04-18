@@ -24,6 +24,7 @@ import {MenuItem} from "primeng/api";
   ]
 })
 export class AppMainComponent implements OnInit, OnDestroy {
+
   public menuInactiveDesktop!: boolean;
 
   public menuActiveMobile!: boolean;

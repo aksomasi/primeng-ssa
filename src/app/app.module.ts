@@ -96,6 +96,7 @@ import { TreeTableModule } from 'primeng/treetable';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { DatasetsComponent } from './pucks/datasets/datasets.component';
 import { CreateDatasetComponent } from './pucks/create-dataset/create-dataset.component';
+import { ReplaceUnderscorePipe } from './replace-underscore.pipe';
 
 // @ts-ignore
 @NgModule({
@@ -108,7 +109,8 @@ import { CreateDatasetComponent } from './pucks/create-dataset/create-dataset.co
     ConfigComponent,
     MenuComponent,
     DatasetsComponent,
-    CreateDatasetComponent
+    CreateDatasetComponent,
+    ReplaceUnderscorePipe
   ],
   imports: [
     BrowserModule,
@@ -209,7 +211,7 @@ import { CreateDatasetComponent } from './pucks/create-dataset/create-dataset.co
     VirtualScrollerModule,
     StyleClassModule,
   ],
-  providers: [],
+  providers: [ReplaceUnderscorePipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

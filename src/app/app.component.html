@@ -1,4 +1,4 @@
-<!--
+
 <div class="layout-wrapper">
 
   <div class="layout-topbar">
@@ -10,8 +10,74 @@
     <app-navigation-bread-crumb></app-navigation-bread-crumb>
 
   </div>
+  <div class="create-dataset container">
+    <div class="content">
+      <div class="grid p-fluid">
+        <div class="col-6 md:col-6 lg:col-3">
+          <span>Dataset Type</span>
+          <p-dropdown [options]="datasetTypes" [(ngModel)]="selectedDataSetType" placeholder="Select a Dataset Type" optionLabel="name"
+          ></p-dropdown>
+          <p *ngIf="selectedDataSetType">Source identical structures in a standard format and pattern according to
+        <a href="javascript:void(0)">Simple Universal Standard </a></p>
+        </div>
+      </div>
+      <div *ngIf="selectedDataSetType">
+      <div class="grid p-fluid padding-top">
+        <div class="col-6 md:col-6 lg:col-3">
+          <span>{{getNameLabel()}}</span>
+          <input type="text" pInputText
+                 [ngModel]="sourceName"
+                 (ngModelChange)="replaceWithUnderScore($event)"
+                placeholder="{{getNameLabel()}}">
+          <p>words should be separated with "-" or "_". Max length of 50 characters</p>
+          <span *ngIf="sourceName">
+               <strong >Dataset ID:</strong>
+            {{selectedDataSetType?.code}}_{{sourceName}}
+            <span *ngIf="contentName">_{{contentName}}</span>
+          </span>
+        </div>
+        <div class="col-6 md:col-6 lg:col-3" *ngIf="selectedDataSetType.code === 'l2'">
+          <span>Content Name(Optional)</span>
+          <input type="text" pInputText
+                 [ngModel]="contentName"
+                 (ngModelChange)="replaceWithUnderScoreContent($event)"
+                 placeholder="Content Name">
+          <p>words should be separated with "-" or "_". Max length of 50 characters</p>
+        </div>
+      </div>
+      <div class="grid p-fluid padding-top">
+        <div class="col-6 md:col-6 lg:col-3">
+          <span>Dataset Summary</span>
+          <input type="text" pInputText
+                 [(ngModel)]="datasetSummary"
+                 placeholder="Dataset Summary">
+          <p>user friendly name that describes the Dataset</p>
+        </div>
+      </div>
+      <div class="grid p-fluid padding-top">
+        <div class="col-6 md:col-6 lg:col-3">
+          <span>Dataset Description</span>
+          <textarea pInputTextarea [(ngModel)]="datasetDescription"
+                    placeholder="Dataset Description"></textarea>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div class="footer grid p-fluid padding-top">
+      <div class="col-6 md:col-6 lg:col-6" style="display: flex">
+        <div class="col-6 md:col-6 lg:col-3">
+          <button pButton pRipple type="button" label="Cancel" class="p-button-raised p-button-text"></button>
+        </div>
+        <div class="col-6 md:col-6 lg:col-3">
+          <button pButton pRipple type="button" label="Create" class="p-button-raised"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <app-content></app-content>
 
 </div>
--->
-<router-outlet></router-outlet>
+
+

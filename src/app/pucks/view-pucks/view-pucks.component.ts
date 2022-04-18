@@ -23,6 +23,7 @@ import {ConfigService} from "../../config.service";
 })
 export class ViewPucksComponent implements OnInit {
   customers1!: any[];
+
   rowGroupMetadata: any;
 
   expandedRows = {};

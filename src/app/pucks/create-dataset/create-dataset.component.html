@@ -1,1 +1,11 @@
-<p>create-dataset works!</p>
+<div class="grid p-fluid">
+  <div class="col-12 md:col-6 lg:col-4">
+    <span>Basic</span>
+    <p-inputMask mask="99-999999" [(ngModel)]="val1" placeholder="99-999999"></p-inputMask>
+  </div>
+
+  <div class="col-12 md:col-6 lg:col-4">
+    <span>SSN</span>
+    <p-inputMask mask="999-99-9999" [(ngModel)]="val2" placeholder="999-99-9999"></p-inputMask>
+  </div>
+</div>

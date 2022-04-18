@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-dataset.component.scss']
 })
 export class CreateDatasetComponent implements OnInit {
+  val1!: string;
+
+  val2!: string;
+
+
 
   constructor() { }
 

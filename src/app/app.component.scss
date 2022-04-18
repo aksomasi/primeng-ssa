@@ -4,3 +4,19 @@
 .layout-wrapper .layout-content {
   padding: 3rem 0rem 1rem;
 }
+//.create-dataset{
+//  min-height: 75vh;
+//  display: flex;
+//  flex-direction: column;
+//  justify-content: space-between;
+//}
+.content{
+  min-height : calc(90vh - 10rem);
+
+}
+.footer{
+  height: 10rem;
+}
+.padding-top{
+  padding-top: 20px;
+}
