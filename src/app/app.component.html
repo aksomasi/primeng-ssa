@@ -10,16 +10,28 @@
     <app-navigation-bread-crumb></app-navigation-bread-crumb>
 
   </div>
+  <app-pace-table [rows]="values" [columns]="col"></app-pace-table>
+  <app-app-main></app-app-main>
+  <form  [formGroup]="dataSetForm">
+
   <div class="create-dataset container">
     <div class="content">
       <div class="grid p-fluid">
+        <div>Dataset Type</div>
+
         <div class="col-6 md:col-6 lg:col-3">
-          <span>Dataset Type</span>
+          <div></div>
           <p-dropdown [options]="datasetTypes" [(ngModel)]="selectedDataSetType" placeholder="Select a Dataset Type" optionLabel="name"
-          ></p-dropdown>
+
+                      formControlName="datasetType"
+                      [ngClass]="{ 'is-invalid': (f['datasetType'].errors) || f['datasetType']?.invalid && (f['datasetType'].dirty || f['datasetType'].touched)}" >
+           </p-dropdown>
+
           <p *ngIf="selectedDataSetType">Source identical structures in a standard format and pattern according to
-        <a href="javascript:void(0)">Simple Universal Standard </a></p>
+
+            <a href="javascript:void(0)">Simple Universal Standard </a></p>
         </div>
+        <p [innerHTML]="test"></p>
       </div>
       <div *ngIf="selectedDataSetType">
       <div class="grid p-fluid padding-top">
@@ -70,12 +82,13 @@
           <button pButton pRipple type="button" label="Cancel" class="p-button-raised p-button-text"></button>
         </div>
         <div class="col-6 md:col-6 lg:col-3">
-          <button pButton pRipple type="button" label="Create" class="p-button-raised"></button>
+          <button pButton pRipple type="button" label="Create" class="p-button-raised" (click)="create()"></button>
         </div>
       </div>
     </div>
   </div>
 
+  </form>
   <app-content></app-content>
 
 </div>

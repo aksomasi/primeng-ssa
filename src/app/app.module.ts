@@ -97,6 +97,9 @@ import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { DatasetsComponent } from './pucks/datasets/datasets.component';
 import { CreateDatasetComponent } from './pucks/create-dataset/create-dataset.component';
 import { ReplaceUnderscorePipe } from './replace-underscore.pipe';
+import { PaceTableComponent } from './components/pace-table/pace-table.component';
+import {ConfigService} from "./config.service";
+import {LowerCasePipe} from "@angular/common";
 
 // @ts-ignore
 @NgModule({
@@ -110,7 +113,8 @@ import { ReplaceUnderscorePipe } from './replace-underscore.pipe';
     MenuComponent,
     DatasetsComponent,
     CreateDatasetComponent,
-    ReplaceUnderscorePipe
+    ReplaceUnderscorePipe,
+    PaceTableComponent
   ],
   imports: [
     BrowserModule,
@@ -208,10 +212,11 @@ import { ReplaceUnderscorePipe } from './replace-underscore.pipe';
     TreeSelectModule,
     TreeTableModule,
     VirtualScrollerModule,
+    ReactiveFormsModule,
     VirtualScrollerModule,
     StyleClassModule,
   ],
-  providers: [ReplaceUnderscorePipe ],
+  providers: [ReplaceUnderscorePipe, ConfigService, LowerCasePipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
