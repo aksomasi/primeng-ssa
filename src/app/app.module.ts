@@ -100,6 +100,9 @@ import { ReplaceUnderscorePipe } from './replace-underscore.pipe';
 import { PaceTableComponent } from './components/pace-table/pace-table.component';
 import {ConfigService} from "./config.service";
 import {LowerCasePipe} from "@angular/common";
+import { CreateModuleComponent } from './components/create-module/create-module.component';
+import { DynamicFormInputComponent } from './test-dymanic-forms/dynamic-form-input/dynamic-form-input.component';
+import { DynamicFormComponent } from './test-dymanic-forms/dynamic-form/dynamic-form.component';
 
 // @ts-ignore
 @NgModule({
@@ -114,7 +117,10 @@ import {LowerCasePipe} from "@angular/common";
     DatasetsComponent,
     CreateDatasetComponent,
     ReplaceUnderscorePipe,
-    PaceTableComponent
+    PaceTableComponent,
+    CreateModuleComponent,
+    DynamicFormInputComponent,
+    DynamicFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,24 @@
+<div class="content">
+  <div class="grid p-fluid">
+    <div class="col-6 md:col-6 lg:col-3">
+      <span class="label-text">{{groupLabel}}</span> <br>
+      <p-dropdown [options]="datasetTypes" [(ngModel)]="selectedDataset" placeholder="Select a Dataset Type"
+                  (onChange)="getSelectedDataSetLabel()"></p-dropdown>
+      <p *ngIf="groupHelpText" [innerHTML]="groupHelpText">
+      </p>
+    </div>
+  </div>
+  <app-dynamic-form-input  *ngFor="let formField of formFields" [isSubmit]="submitted"  [form]="form" [input]="formField"></app-dynamic-form-input>
+</div>
+<div class="footer grid p-fluid padding-top">
+  <div class="col-6 md:col-6 lg:col-6" style="display: flex">
+    <div class="col-6 md:col-6 lg:col-3">
+      <button pButton pRipple type="button" label="Cancel"
+              class="p-button-raised p-button-text"></button>
+    </div>
+    <div class="col-6 md:col-6 lg:col-3">
+      <button pButton pRipple type="button" label="Create" class="p-button-raised"
+                        [disabled]="this.selectedDataset === '' || form.invalid"   (click)="createDataset()"></button>
+    </div>
+  </div>
+</div>

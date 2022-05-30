@@ -37,7 +37,9 @@ export class ConfigService {
   getConfig() {
     return this.config;
   }
-
+  getResourcTypes(){
+    return this.http.get('assets/data-backup.json');
+  }
   getCustomersLarge() {
     return this.http.get<any>('assets/demo/data/customers-large.json')
       .toPromise()

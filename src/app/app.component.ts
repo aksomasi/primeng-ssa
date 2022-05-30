@@ -4,6 +4,12 @@ import {ReplaceUnderscorePipe} from "./replace-underscore.pipe";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ConfigService} from "./config.service";
 import {LowerCasePipe} from "@angular/common";
+import {FormFieldControlHarness} from "@angular/material/form-field/testing";
+import {Observable, of} from "rxjs";
+import {FormField} from "./test-dymanic-forms/form-field";
+import {FormFieldControlService} from "./test-dymanic-forms/formfield-control.service";
+import {RsrcTypeElement} from "./pucks/create-dataset/rsrcType.interface";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-root',
@@ -64,7 +70,38 @@ export class AppComponent {
   }
   col: any [] = [];
   values: any [] = [];
-  constructor(private lowerCase: LowerCasePipe ,private formBuilder: FormBuilder, private replaceUnderScore: ReplaceUnderscorePipe, private primengConfig: PrimeNGConfig, private config: ConfigService) {
+  title = 'AngularDynamicForms';
+  formFields: Observable<FormField<any>[]>;
+  newFormFields: FormField<any>[] = [];
+  newFields: Observable<FormField<any>[]>;
+  resourceTypes: any
+  constructor(private santized: DomSanitizer, private puckService: ConfigService, service: FormFieldControlService, private lowerCase: LowerCasePipe ,private formBuilder: FormBuilder, private replaceUnderScore: ReplaceUnderscorePipe, private primengConfig: PrimeNGConfig, private config: ConfigService) {
+    this.formFields = service.getFormFields();
+    this.puckService.getResourcTypes().subscribe((val : RsrcTypeElement []) =>{
+      this.resourceTypes = val;
+      console.log(this.resourceTypes)
+      let inputs: FormField<string>[];
+
+      this.resourceTypes.forEach(val=>{
+       const newField = new FormField<string>({
+          controlType: val.inputValueTypeNam,
+          key: val.rsrcValueTypeNam.replace(" ",'').toLowerCase(),
+          label: val.rsrcValueTypeNam,
+          required: val.rqrdValueFlg,
+          order: val.displayOrder,
+          ruleType: val.ruleTypeName,
+         ruleText: val.ruleText,
+         ruleErrorMessage: val.errorMessage,
+          uiText: this.santized.bypassSecurityTrustHtml(val.resourceValueTypeUiText),
+          options: [],
+
+        });
+        this.newFormFields.push(newField)
+      })
+      this.newFields =  of(this.newFormFields.sort((a, b) => a.order - b.order));
+
+    })
+
     this.dataTable.headers.forEach((val: any)=>{
       const headerValue = val.split(" ");
       let field = this.lowerCase.transform(headerValue[0])

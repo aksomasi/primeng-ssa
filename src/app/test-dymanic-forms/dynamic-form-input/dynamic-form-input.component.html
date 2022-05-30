@@ -1,0 +1,67 @@
+<div [formGroup]="form" class="form-group">
+
+  <div [ngSwitch]="input.controlType">
+    <div *ngSwitchCase="'Text'">
+      <div class="grid p-fluid padding-top">
+        <div class="col-6 md:col-6 lg:col-3">
+          <span class="label-text">{{input.label}}</span>
+          <input class="form-control" pInputText [formControlName]="input.key" [id]="input.key" [type]="input.type">
+          <p [innerHTML]="input.uiText">
+          </p>
+          <div class="error-txt-msg mb-2" *ngIf="form.controls[input.key].hasError('required') && (form.controls[input.key].dirty || form.controls[input.key].touched)" style="color: red;">
+            {{input.label}} Required
+          </div>
+          <div class="error-txt-msg mb-2" *ngIf="form.controls[input.key].hasError('pattern')" style="color: red;">
+            {{input.ruleErrorMessage}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngSwitchCase="'Label'">
+      <div class="grid p-fluid padding-top">
+        <div class="col-6 md:col-6 lg:col-3">
+          <span class="label-text">{{input.label}}:</span>
+          {{form.controls[input.key].value}}
+        </div>
+        <div class="error-txt-msg mb-2" *ngIf="form.controls[input.key].hasError('pattern')" style="color: red;">
+          {{input.ruleErrorMessage}}
+        </div>
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'dropdown'">
+      <label [attr.for]="input.key">{{input.label}}</label>
+      <select class="custom-select" [id]="input.key" [formControlName]="input.key">
+        <option *ngFor="let opt of input.options" [value]="opt.key">{{opt.value}}</option>
+      </select>
+    </div>
+
+    <div *ngSwitchCase="'checkbox'">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" [formControlName]="input.key" [id]="input.key">
+        <label class="form-check-label" [attr.for]="input.key">{{input.label}}</label>
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'radio'">
+      <div class="form-check form-check-inline" *ngFor="let opt of input.options">
+        <input class="form-check-input" type="radio" [formControlName]="input.key" [id]="input.key" [value]="opt.value">
+        <label class="form-check-label" [attr.for]="opt.key"> {{ opt.value }} </label>
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'Textarea'">
+      <div class="grid p-fluid padding-top">
+        <div class="col-6 md:col-6 lg:col-3">
+          <span class="label-text">{{input.label}}</span>
+          <textarea class="form-control" pInputTextarea [formControlName]="input.key" [id]="input.key" [type]="input.type">
+          </textarea>
+            <p [innerHTML]="input.uiText">
+          </p>
+        </div>
+      </div>
+     </div>
+
+  </div>
+
+</div>

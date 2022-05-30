@@ -1,95 +1,96 @@
 
 <div class="layout-wrapper">
+<app-create-module></app-create-module>
 
-  <div class="layout-topbar">
-    <a class="action-icon menu-icon"> <i class="pi pi-bars"></i> </a>
-    <h2 style="color: black;padding-top: 10px;">Self Service App</h2>
-    <a class="route-link"> Getting Started</a>
-  </div>
-  <div class="layout-content">
-    <app-navigation-bread-crumb></app-navigation-bread-crumb>
+<!--  <div class="layout-topbar">-->
+<!--    <a class="action-icon menu-icon"> <i class="pi pi-bars"></i> </a>-->
+<!--    <h2 style="color: black;padding-top: 10px;">Self Service App</h2>-->
+<!--    <a class="route-link"> Getting Started</a>-->
+<!--  </div>-->
+<!--  <div class="layout-content">-->
+<!--    <app-navigation-bread-crumb></app-navigation-bread-crumb>-->
 
-  </div>
-  <app-pace-table [rows]="values" [columns]="col"></app-pace-table>
-  <app-app-main></app-app-main>
-  <form  [formGroup]="dataSetForm">
+<!--  </div>-->
+<!--  <app-pace-table [rows]="values" [columns]="col"></app-pace-table>-->
+<!--  <app-app-main></app-app-main>-->
+<!--  <form  [formGroup]="dataSetForm">-->
 
-  <div class="create-dataset container">
-    <div class="content">
-      <div class="grid p-fluid">
-        <div>Dataset Type</div>
+<!--  <div class="create-dataset container">-->
+<!--    <div class="content">-->
+<!--      <div class="grid p-fluid">-->
+<!--        <div>Dataset Type</div>-->
 
-        <div class="col-6 md:col-6 lg:col-3">
-          <div></div>
-          <p-dropdown [options]="datasetTypes" [(ngModel)]="selectedDataSetType" placeholder="Select a Dataset Type" optionLabel="name"
+<!--        <div class="col-6 md:col-6 lg:col-3">-->
+<!--          <div></div>-->
+<!--          <p-dropdown [options]="datasetTypes" [(ngModel)]="selectedDataSetType" placeholder="Select a Dataset Type" optionLabel="name"-->
 
-                      formControlName="datasetType"
-                      [ngClass]="{ 'is-invalid': (f['datasetType'].errors) || f['datasetType']?.invalid && (f['datasetType'].dirty || f['datasetType'].touched)}" >
-           </p-dropdown>
+<!--                      formControlName="datasetType"-->
+<!--                      [ngClass]="{ 'is-invalid': (f['datasetType'].errors) || f['datasetType']?.invalid && (f['datasetType'].dirty || f['datasetType'].touched)}" >-->
+<!--           </p-dropdown>-->
 
-          <p *ngIf="selectedDataSetType">Source identical structures in a standard format and pattern according to
+<!--          <p *ngIf="selectedDataSetType">Source identical structures in a standard format and pattern according to-->
 
-            <a href="javascript:void(0)">Simple Universal Standard </a></p>
-        </div>
-        <p [innerHTML]="test"></p>
-      </div>
-      <div *ngIf="selectedDataSetType">
-      <div class="grid p-fluid padding-top">
-        <div class="col-6 md:col-6 lg:col-3">
-          <span>{{getNameLabel()}}</span>
-          <input type="text" pInputText
-                 [ngModel]="sourceName"
-                 (ngModelChange)="replaceWithUnderScore($event)"
-                placeholder="{{getNameLabel()}}">
-          <p>words should be separated with "-" or "_". Max length of 50 characters</p>
-          <span *ngIf="sourceName">
-               <strong >Dataset ID:</strong>
-            {{selectedDataSetType?.code}}_{{sourceName}}
-            <span *ngIf="contentName">_{{contentName}}</span>
-          </span>
-        </div>
-        <div class="col-6 md:col-6 lg:col-3" *ngIf="selectedDataSetType.code === 'l2'">
-          <span>Content Name(Optional)</span>
-          <input type="text" pInputText
-                 [ngModel]="contentName"
-                 (ngModelChange)="replaceWithUnderScoreContent($event)"
-                 placeholder="Content Name">
-          <p>words should be separated with "-" or "_". Max length of 50 characters</p>
-        </div>
-      </div>
-      <div class="grid p-fluid padding-top">
-        <div class="col-6 md:col-6 lg:col-3">
-          <span>Dataset Summary</span>
-          <input type="text" pInputText
-                 [(ngModel)]="datasetSummary"
-                 placeholder="Dataset Summary">
-          <p>user friendly name that describes the Dataset</p>
-        </div>
-      </div>
-      <div class="grid p-fluid padding-top">
-        <div class="col-6 md:col-6 lg:col-3">
-          <span>Dataset Description</span>
-          <textarea pInputTextarea [(ngModel)]="datasetDescription"
-                    placeholder="Dataset Description"></textarea>
-        </div>
-      </div>
-      </div>
-    </div>
+<!--            <a href="javascript:void(0)">Simple Universal Standard </a></p>-->
+<!--        </div>-->
+<!--        <p [innerHTML]="test"></p>-->
+<!--      </div>-->
+<!--      <div *ngIf="selectedDataSetType">-->
+<!--      <div class="grid p-fluid padding-top">-->
+<!--        <div class="col-6 md:col-6 lg:col-3">-->
+<!--          <span>{{getNameLabel()}}</span>-->
+<!--          <input type="text" pInputText-->
+<!--                 [ngModel]="sourceName"-->
+<!--                 (ngModelChange)="replaceWithUnderScore($event)"-->
+<!--                placeholder="{{getNameLabel()}}">-->
+<!--          <p>words should be separated with "-" or "_". Max length of 50 characters</p>-->
+<!--          <span *ngIf="sourceName">-->
+<!--               <strong >Dataset ID:</strong>-->
+<!--            {{selectedDataSetType?.code}}_{{sourceName}}-->
+<!--            <span *ngIf="contentName">_{{contentName}}</span>-->
+<!--          </span>-->
+<!--        </div>-->
+<!--        <div class="col-6 md:col-6 lg:col-3" *ngIf="selectedDataSetType.code === 'l2'">-->
+<!--          <span>Content Name(Optional)</span>-->
+<!--          <input type="text" pInputText-->
+<!--                 [ngModel]="contentName"-->
+<!--                 (ngModelChange)="replaceWithUnderScoreContent($event)"-->
+<!--                 placeholder="Content Name">-->
+<!--          <p>words should be separated with "-" or "_". Max length of 50 characters</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="grid p-fluid padding-top">-->
+<!--        <div class="col-6 md:col-6 lg:col-3">-->
+<!--          <span>Dataset Summary</span>-->
+<!--          <input type="text" pInputText-->
+<!--                 [(ngModel)]="datasetSummary"-->
+<!--                 placeholder="Dataset Summary">-->
+<!--          <p>user friendly name that describes the Dataset</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="grid p-fluid padding-top">-->
+<!--        <div class="col-6 md:col-6 lg:col-3">-->
+<!--          <span>Dataset Description</span>-->
+<!--          <textarea pInputTextarea [(ngModel)]="datasetDescription"-->
+<!--                    placeholder="Dataset Description"></textarea>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
-    <div class="footer grid p-fluid padding-top">
-      <div class="col-6 md:col-6 lg:col-6" style="display: flex">
-        <div class="col-6 md:col-6 lg:col-3">
-          <button pButton pRipple type="button" label="Cancel" class="p-button-raised p-button-text"></button>
-        </div>
-        <div class="col-6 md:col-6 lg:col-3">
-          <button pButton pRipple type="button" label="Create" class="p-button-raised" (click)="create()"></button>
-        </div>
-      </div>
-    </div>
-  </div>
+<!--    <div class="footer grid p-fluid padding-top">-->
+<!--      <div class="col-6 md:col-6 lg:col-6" style="display: flex">-->
+<!--        <div class="col-6 md:col-6 lg:col-3">-->
+<!--          <button pButton pRipple type="button" label="Cancel" class="p-button-raised p-button-text"></button>-->
+<!--        </div>-->
+<!--        <div class="col-6 md:col-6 lg:col-3">-->
+<!--          <button pButton pRipple type="button" label="Create" class="p-button-raised" (click)="create()"></button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 
-  </form>
-  <app-content></app-content>
+<!--  </form>-->
+<!--  <app-content></app-content>-->
 
 </div>
 

@@ -1,11 +1,76 @@
-<div class="grid p-fluid">
-  <div class="col-12 md:col-6 lg:col-4">
-    <span>Basic</span>
-    <p-inputMask mask="99-999999" [(ngModel)]="val1" placeholder="99-999999"></p-inputMask>
+<div class="create-dataset container">
+  <h2>BigQuery Dataset Configuration</h2>
+  <div class="content">
+    <div class="grid p-fluid">
+      <div class="col-6 md:col-6 lg:col-3">
+        <span class="label-text">{{groupLabel}}</span> <br>
+        <p-dropdown [options]="datasetType" [(ngModel)]="selectedDataSetType" placeholder="Select a Dataset Type" optionLabel="name"
+                    (onChange)="getSelectedDataSetLabel()"></p-dropdown>
+        <p *ngIf="groupHelpText" [innerHTML]="groupHelpText">
+        </p>
+      </div>
+    </div>
+
+
+
+    <div *ngIf="selectedDataSetType">
+      <div class="grid p-fluid padding-top">
+        <div class="col-6 md:col-6 lg:col-3">
+          <span class="label-text">{{displayElement1.label}}</span>
+          <input type="text" pInputText
+                 [(ngModel)]="displayElement1.rsrcTypeValue"
+                 (ngModelChange)="replaceWithUnderScore($event)"
+                 placeholder="{{displayElement1.label}}">
+          <p [innerHTML]="displayElement1.uiText">
+          </p>
+          <span *ngIf="name" class="label-text">
+             <strong >{{displayElement3.label}}:</strong>
+            {{selectedDataSetType?.code}}_{{name}}
+            <span *ngIf="optionalName">_{{optionalName}}</span>
+        </span>
+        </div>
+
+      </div>
+      <div class="grid p-fluid padding-top">
+        <div class="col-6 md:col-6 lg:col-3">
+          <span class="label-text">{{displayElement2.label}} (Optional)</span>
+          <input type="text" pInputText
+                 [(ngModel)]="displayElement2.rsrcTypeValue"
+                 (ngModelChange)="replaceWithUnderScoreContent($event)"
+                 placeholder="{{displayElement2.label}}  ">
+          <p>{{displayElement2.uiText}} </p>
+        </div>
+      </div>
+      <div class="grid p-fluid padding-top">
+        <div class="col-6 md:col-6 lg:col-3">
+          <span class="label-text"> {{displayElement4.label}}</span>
+          <input type="text" pInputText
+                 [(ngModel)]="displayElement4.rsrcTypeValue"
+                 placeholder="{{displayElement4.label}}">
+          <p> {{displayElement4.uiText}}</p>
+        </div>
+      </div>
+      <div class="grid p-fluid padding-top">
+        <div class="col-6 md:col-6 lg:col-3">
+          <span class="label-text">{{ displayElement5.label}}</span>
+          <textarea pInputTextarea [(ngModel)]="displayElement5.rsrcTypeValue"
+                    placeholder="{{displayElement5.label}}"></textarea>
+          <p> {{displayElement5.uiText}}</p>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="col-12 md:col-6 lg:col-4">
-    <span>SSN</span>
-    <p-inputMask mask="999-99-9999" [(ngModel)]="val2" placeholder="999-99-9999"></p-inputMask>
+  <div class="footer grid p-fluid padding-top">
+    <div class="col-6 md:col-6 lg:col-6" style="display: flex">
+      <div class="col-6 md:col-6 lg:col-3">
+        <button pButton pRipple type="button" label="Cancel" class="p-button-raised p-button-text" (click)="cancel()"></button>
+      </div>
+      <div class="col-6 md:col-6 lg:col-3">
+        <button pButton pRipple type="button" label="Create" class="p-button-raised"
+                [disabled]="!selectedDataSetType || displayElement1.rsrcTypeValue === ''|| displayElement4.rsrcTypeValue === '' || displayElement5.rsrcTypeValue === ''"
+                (click)="createDataset()"></button>
+      </div>
+    </div>
   </div>
 </div>
